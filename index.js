@@ -15,6 +15,13 @@ var transporter = nodemailer.createTransport({
 ///////////////////////
 const express = require("express")
 const app = express()
+const cors = require("cors");
+app.use(cors({
+  origin: "*",
+  allowedHeaders: ['Origin','X-Requested-With','Content-Type', 'Authorization'],
+  maxAge: 864000,
+   "preflightContinue": true,
+}));
 const fs = require("fs-extra")
 const busboy = require("connect-busboy");   // Middleware to handle the file upload https://github.com/mscdex/connect-busboy
 const uploadPath = './file/'; // Register the upload path
